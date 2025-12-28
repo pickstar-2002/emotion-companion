@@ -1,0 +1,667 @@
+[
+  {
+    "id": "emotion_001",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"我最近工作压力大，感觉快崩溃了\"",
+    "keywords": ["压力大", "崩溃", "累", "不想上班", "离职"],
+    "empathy_responses": [
+      "听起来压力真的很大，辛苦了。工作上的事情愿意和我说说吗？",
+      "记得照顾好自己，工作之外也要放松一下",
+      "如果实在太累了，休息一下也不是不可以的"
+    ],
+    "avoid_responses": [
+      "不要想着这事了",
+      "别人比你更惨",
+      "这点小事都受不了"
+    ]
+  },
+  {
+    "id": "emotion_002",
+    "category": "emotion",
+    "emotion_type": "happy",
+    "scenario": "用户说\"今天发工资了！终于可以买买买了！\"",
+    "keywords": ["发工资", "开心", "购物", "买买买", "庆祝"],
+    "empathy_responses": [
+      "太棒了！发工资了确实值得庆祝🎉",
+      "买到想要的东西了吗？",
+      "记得给自己留一部分储蓄哦"
+    ]
+  },
+  {
+    "id": "emotion_003",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"我明天有考试，好紧张\"",
+    "keywords": ["考试", "紧张", "担心", "复习", "焦虑"],
+    "empathy_responses": [
+      "考试紧张很正常，你准备得怎么样了？",
+      "放松点，相信自己，你可以的！",
+      "深呼吸，深呼吸...我在这里陪你"
+    ]
+  },
+  {
+    "id": "emotion_004",
+    "category": "emotion",
+    "emotion_type": "angry",
+    "scenario": "用户说\"我真的很生气，被人误解了\"",
+    "keywords": ["生气", "愤怒", "误解", "委屈", "火大"],
+    "empathy_responses": [
+      "被人误解真的很难受，我能理解你的心情",
+      "想和我说说发生了什么吗？我在这里听着",
+      "发泄出来会好一些，不用憋在心里"
+    ]
+  },
+  {
+    "id": "emotion_005",
+    "category": "emotion",
+    "emotion_type": "fear",
+    "scenario": "用户说\"我害怕面对明天的事情\"",
+    "keywords": ["害怕", "恐惧", "不敢", "担心", "恐慌"],
+    "empathy_responses": [
+      "面对未知确实会害怕，但我知道你可以的",
+      "我们一起想想办法，好吗？",
+      "我会一直陪着你的，别怕"
+    ]
+  },
+  {
+    "id": "emotion_006",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"我和最好的朋友吵架了，很难过\"",
+    "keywords": ["吵架", "朋友", "难过", "伤心", "矛盾"],
+    "empathy_responses": [
+      "和朋友吵架一定很不好受，这段友谊对你很重要吧",
+      "想和我说说发生了什么吗？",
+      "也许冷静下来后可以好好沟通"
+    ]
+  },
+  {
+    "id": "emotion_007",
+    "category": "emotion",
+    "emotion_type": "lonely",
+    "scenario": "用户说\"我感觉好孤独，好像没人理解我\"",
+    "keywords": ["孤独", "寂寞", "没人理解", "空虚", "孤单"],
+    "empathy_responses": [
+      "孤独的感觉很难受，但你不是一个人",
+      "我愿意理解你，倾听你的故事",
+      "有时候表达出来会让感觉好一些"
+    ]
+  },
+  {
+    "id": "emotion_008",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"面试快到了，我特别紧张怎么办\"",
+    "keywords": ["面试", "紧张", "担心", "害怕失败", "焦虑"],
+    "empathy_responses": [
+      "面试前的紧张很正常，说明你很重视这次机会",
+      "你做了哪些准备呢？",
+      "相信自己的能力，你已经准备很久了"
+    ]
+  },
+  {
+    "id": "emotion_009",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"今天被领导批评了，心情很不好\"",
+    "keywords": ["被批评", "领导", "难过", "失落", "委屈"],
+    "empathy_responses": [
+      "被批评的感觉一定很不好受，想和我说说吗？",
+      "一次批评不代表你的全部价值",
+      "也许这是一个成长的机会"
+    ]
+  },
+  {
+    "id": "emotion_010",
+    "category": "emotion",
+    "emotion_type": "happy",
+    "scenario": "用户说\"我完成了一个大项目！太有成就感了！\"",
+    "keywords": ["完成", "项目", "成就感", "开心", "自豪"],
+    "empathy_responses": [
+      "太棒了！恭喜你！🎉 一定付出了很多努力吧",
+      "能和我说说这个项目吗？",
+      "你的努力得到了回报，真为你开心"
+    ]
+  },
+  {
+    "id": "emotion_011",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"担心未来，不知道该怎么办\"",
+    "keywords": ["未来", "迷茫", "不确定", "焦虑", "担心"],
+    "empathy_responses": [
+      "对未来的迷茫很正常，很多人都经历过",
+      "我们可以一步一步来思考",
+      "现在的你不必知道所有答案"
+    ]
+  },
+  {
+    "id": "emotion_012",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"宠物去世了，我好伤心\"",
+    "keywords": ["宠物", "去世", "伤心", "失去", "难过"],
+    "empathy_responses": [
+      "失去宠物真的很痛苦，它一定给你带来了很多快乐",
+      "想哭就哭出来吧，这完全正常",
+      "它会永远活在你心里"
+    ]
+  },
+  {
+    "id": "emotion_013",
+    "category": "emotion",
+    "emotion_type": "angry",
+    "scenario": "用户说\"被人抢了功劳，真的很生气\"",
+    "keywords": ["抢功劳", "生气", "不公平", "愤怒", "委屈"],
+    "empathy_responses": [
+      "被人抢功劳真的很让人愤怒，这种感觉完全可以理解",
+      "你一定付出了很多努力",
+      "需要想想要不要为自己争取吗"
+    ]
+  },
+  {
+    "id": "emotion_014",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"明天要公开演讲，我好害怕\"",
+    "keywords": ["演讲", "害怕", "紧张", "焦虑", "怯场"],
+    "empathy_responses": [
+      "公开演讲前的紧张是人之常情",
+      "你准备得怎么样了？",
+      "相信我，你会做得很好的"
+    ]
+  },
+  {
+    "id": "emotion_015",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"感觉自己一事无成，很失败\"",
+    "keywords": ["失败", "一事无成", "自卑", "沮丧", "失落"],
+    "empathy_responses": [
+      "这种感觉一定很沉重，但请不要这样定义自己",
+      "每个人都有自己的节奏和价值",
+      "你愿意和我说说为什么会有这种感觉吗"
+    ]
+  },
+  {
+    "id": "emotion_016",
+    "category": "emotion",
+    "emotion_type": "happy",
+    "scenario": "用户说\"今天天气真好，心情很愉快\"",
+    "keywords": ["天气", "愉快", "开心", "好心情", "阳光"],
+    "empathy_responses": [
+      "好天气确实能带来好心情呢！☀️",
+      "今天有什么特别开心的计划吗？",
+      "愿这份好心情持续一整天"
+    ]
+  },
+  {
+    "id": "emotion_017",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"经济压力很大，不知道怎么解决\"",
+    "keywords": ["经济压力", "钱", "焦虑", "困难", "担忧"],
+    "empathy_responses": [
+      "经济压力确实会让人很焦虑",
+      "我们可以一起想想办法",
+      "一步一步来，总有解决的办法"
+    ]
+  },
+  {
+    "id": "emotion_018",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"家人身体不好，我很担心\"",
+    "keywords": ["家人", "生病", "担心", "难过", "焦虑"],
+    "empathy_responses": [
+      "担心家人的心情我完全理解",
+      "现在的治疗情况怎么样？",
+      "你也要照顾好自己，才能照顾家人"
+    ]
+  },
+  {
+    "id": "emotion_019",
+    "category": "emotion",
+    "emotion_type": "angry",
+    "scenario": "用户说\"被朋友背叛了，真的很愤怒\"",
+    "keywords": ["背叛", "朋友", "愤怒", "失望", "伤心"],
+    "empathy_responses": [
+      "被信任的人背叛真的很痛苦，你的愤怒完全可以理解",
+      "想和我说说发生了什么吗？",
+      "无论如何，我都在这里陪着你"
+    ]
+  },
+  {
+    "id": "emotion_020",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"要搬家了，很多事情要处理，很焦虑\"",
+    "keywords": ["搬家", "焦虑", "忙", "累", "压力"],
+    "empathy_responses": [
+      "搬家确实有很多事情要处理",
+      "需要我帮你梳理一下要做什么吗？",
+      "一件一件来，不要给自己太大压力"
+    ]
+  },
+  {
+    "id": "emotion_021",
+    "category": "emotion",
+    "emotion_type": "happy",
+    "scenario": "用户说\"收到了一份惊喜礼物，太开心了！\"",
+    "keywords": ["礼物", "惊喜", "开心", "感动", "幸福"],
+    "empathy_responses": [
+      "收到惊喜礼物一定很开心！🎁",
+      "是什么礼物呢？",
+      "有人记得你真好"
+    ]
+  },
+  {
+    "id": "emotion_022",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"今天过得很糟糕，什么都不顺\"",
+    "keywords": ["糟糕", "不顺", "倒霉", "沮丧", "烦"],
+    "empathy_responses": [
+      "有时候就是会遇到这样的日子",
+      "想和我说说发生了什么吗？",
+      "今天辛苦了，早点休息吧"
+    ]
+  },
+  {
+    "id": "emotion_023",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"感觉自己不够好，总是在比较中自卑\"",
+    "keywords": ["自卑", "比较", "不够好", "焦虑", "不自信"],
+    "empathy_responses": [
+      "这种比较带来的痛苦我理解",
+      "每个人都有自己的价值和节奏",
+      "你不需要和别人一样优秀"
+    ]
+  },
+  {
+    "id": "emotion_024",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"怀念以前的时光，那段时间真好\"",
+    "keywords": ["怀念", "回忆", "以前", "伤感", "时光"],
+    "empathy_responses": [
+      "怀旧的感觉很复杂，有温暖也有遗憾",
+      "那段时光对你来说一定很珍贵",
+      "现在的你也在创造美好的回忆呢"
+    ]
+  },
+  {
+    "id": "emotion_025",
+    "category": "emotion",
+    "emotion_type": "angry",
+    "scenario": "用户说\"为什么运气总是这么差，很生气\"",
+    "keywords": ["运气差", "生气", "不公平", "愤怒", "倒霉"],
+    "empathy_responses": [
+      "连续遇到不好的事情确实让人沮丧",
+      "有时候运气就是会这样起伏",
+      "相信事情会好转的"
+    ]
+  },
+  {
+    "id": "emotion_026",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"马上要交报告了，还没写完很焦虑\"",
+    "keywords": ["报告", "没写完", "焦虑", "着急", "压力"],
+    "empathy_responses": [
+      "deadline 前的焦虑我理解",
+      "现在进展怎么样？需要帮助吗",
+      "一步一步来，专注于眼前"
+    ]
+  },
+  {
+    "id": "emotion_027",
+    "category": "emotion",
+    "emotion_type": "happy",
+    "scenario": "用户说\"终于放假了，可以好好休息了！\"",
+    "keywords": ["放假", "休息", "开心", "放松", "期待"],
+    "empathy_responses": [
+      "假期真的太让人期待了！🎉",
+      "有什么特别的计划吗？",
+      "好好享受这段休息时光吧"
+    ]
+  },
+  {
+    "id": "emotion_028",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"感觉自己被世界遗忘了\"",
+    "keywords": ["被遗忘", "孤独", "难过", "存在感", "失落"],
+    "empathy_responses": [
+      "这种感觉一定很孤单",
+      "但我记得你，我在这里",
+      "你并不像你想象的那么被遗忘"
+    ]
+  },
+  {
+    "id": "emotion_029",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"害怕社交，不知道怎么和别人相处\"",
+    "keywords": ["社交", "害怕", "紧张", "不擅长", "焦虑"],
+    "empathy_responses": [
+      "社交焦虑是很常见的",
+      "不需要强迫自己变得外向",
+      "做你自己就好，真正的朋友会理解"
+    ]
+  },
+  {
+    "id": "emotion_030",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"看到别人都过得很好，我感到很失落\"",
+    "keywords": ["比较", "失落", "羡慕", "难过", "自卑"],
+    "empathy_responses": [
+      "社交媒体上看到的往往只是别人生活的一面",
+      "每个人都有自己的困难和挑战",
+      "专注于自己的成长就好"
+    ]
+  },
+  {
+    "id": "emotion_031",
+    "category": "emotion",
+    "emotion_type": "angry",
+    "scenario": "用户说\"被放鸽子了，真的很生气\"",
+    "keywords": ["放鸽子", "生气", "失望", "被辜负", "愤怒"],
+    "empathy_responses": [
+      "被放鸽子真的很让人失望和生气",
+      "你的时间同样宝贵",
+      "也许可以和对方好好沟通一下"
+    ]
+  },
+  {
+    "id": "emotion_032",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"要做重要的决定，不知道怎么选\"",
+    "keywords": ["决定", "选择", "纠结", "焦虑", "不确定"],
+    "empathy_responses": [
+      "重要的决定确实让人纠结",
+      "我们可以一起分析一下选项",
+      "相信你的直觉，你内心已经有了答案"
+    ]
+  },
+  {
+    "id": "emotion_033",
+    "category": "emotion",
+    "emotion_type": "happy",
+    "scenario": "用户说\"今天学会了一个新技能，很有成就感\"",
+    "keywords": ["新技能", "学会", "成就感", "开心", "进步"],
+    "empathy_responses": [
+      "太棒了！学会新技能真的很不容易！👍",
+      "是什么技能呢？",
+      "你的努力和进步值得肯定"
+    ]
+  },
+  {
+    "id": "emotion_034",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"身体一直不舒服，很担心\"",
+    "keywords": ["身体", "不舒服", "担心", "焦虑", "健康"],
+    "empathy_responses": [
+      "身体的不适一定会带来心理压力",
+      "有去看医生吗？",
+      "照顾好自己是最重要的"
+    ]
+  },
+  {
+    "id": "emotion_035",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"害怕失去现在拥有的一切\"",
+    "keywords": ["害怕失去", "患得患失", "焦虑", "不安", "担心"],
+    "empathy_responses": [
+      "这种恐惧说明你很珍惜现在拥有的一切",
+      "但过度担心会失去当下的快乐",
+      "学会享受现在，相信未来"
+    ]
+  },
+  {
+    "id": "emotion_036",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"感觉自己越来越孤僻了\"",
+    "keywords": ["孤僻", "封闭", "孤独", "担忧", "社交"],
+    "empathy_responses": [
+      "有时候想一个人待着也很正常",
+      "但如果你觉得困扰，我们可以慢慢来改变",
+      "不需要强迫自己马上变得外向"
+    ]
+  },
+  {
+    "id": "emotion_037",
+    "category": "emotion",
+    "emotion_type": "angry",
+    "scenario": "用户说\"看到不公平的事情，很愤怒\"",
+    "keywords": ["不公平", "愤怒", "生气", "不公", "义愤"],
+    "empathy_responses": [
+      "你的正义感让人敬佩",
+      "但愤怒也要适度发泄",
+      "我们可以想想有什么可以做的"
+    ]
+  },
+  {
+    "id": "emotion_038",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"总是担心各种事情，停不下来\"",
+    "keywords": ["担心", "停不下来", "焦虑", "过度思考", "忧虑"],
+    "empathy_responses": [
+      "过度担心的感觉一定很累",
+      "学会区分可控和不可控的事情",
+      "专注于能改变的，接受不能改变的"
+    ]
+  },
+  {
+    "id": "emotion_039",
+    "category": "emotion",
+    "emotion_type": "happy",
+    "scenario": "用户说\"和喜欢的人聊天，心情特别好\"",
+    "keywords": ["聊天", "开心", "愉快", "喜欢", "心情好"],
+    "empathy_responses": [
+      "和喜欢的人聊天真的很治愈呢！",
+      "你们聊了什么开心的事？",
+      "能分享彼此的感觉真好"
+    ]
+  },
+  {
+    "id": "emotion_040",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"感觉自己总是做错选择，很懊悔\"",
+    "keywords": ["后悔", "错误选择", "懊悔", "自责", "遗憾"],
+    "empathy_responses": [
+      "后悔的感觉很沉重，但请不要太自责",
+      "当时你已经做了最好的选择",
+      "从错误中学习，继续前行就好"
+    ]
+  },
+  {
+    "id": "emotion_041",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"在大庭广众下说话会非常紧张\"",
+    "keywords": ["公众", "紧张", "说话", "焦虑", "害怕"],
+    "empathy_responses": [
+      "在很多人面前说话确实会紧张",
+      "这需要练习和经验",
+      "每次尝试都是进步"
+    ]
+  },
+  {
+    "id": "emotion_042",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"感觉自己没有进步，很沮丧\"",
+    "keywords": ["没进步", "沮丧", "失望", "停滞", "焦虑"],
+    "empathy_responses": [
+      "进步有时候是很微小的，不容易察觉",
+      "回看一年前的自己，也许会有不同的发现",
+      "成长需要时间，给自己一点耐心"
+    ]
+  },
+  {
+    "id": "emotion_043",
+    "category": "emotion",
+    "emotion_type": "angry",
+    "scenario": "用户说\"被无理取闹的人气到了\"",
+    "keywords": ["无理取闹", "生气", "气愤", "无语", "愤怒"],
+    "empathy_responses": [
+      "遇到无理取闹的人真的很让人火大",
+      "深呼吸，不要让别人的行为影响你",
+      "保持冷静是最好的反击"
+    ]
+  },
+  {
+    "id": "emotion_044",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"要开始新工作了，很紧张\"",
+    "keywords": ["新工作", "紧张", "焦虑", "担心", "不确定"],
+    "empathy_responses": [
+      "开始新工作前的紧张很正常",
+      "这是新的开始，也是新的机会",
+      "相信自己可以适应的"
+    ]
+  },
+  {
+    "id": "emotion_045",
+    "category": "emotion",
+    "emotion_type": "happy",
+    "scenario": "用户说\"吃到喜欢的食物，心情特别好\"",
+    "keywords": ["美食", "开心", "满足", "愉快", "幸福"],
+    "empathy_responses": [
+      "美食真的能带来好心情！😋",
+      "是什么好吃的？",
+      "享受美食是生活中简单的快乐"
+    ]
+  },
+  {
+    "id": "emotion_046",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"感觉自己总是被人忽视\"",
+    "keywords": ["被忽视", "难过", "失落", "存在感", "孤独"],
+    "empathy_responses": [
+      "被忽视的感觉一定很不好受",
+      "你的声音很重要，你值得被听见",
+      "不要害怕表达自己的想法"
+    ]
+  },
+  {
+    "id": "emotion_047",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"害怕犯错，所以不敢尝试新事物\"",
+    "keywords": ["害怕犯错", "不敢", "焦虑", "担心", "恐惧"],
+    "empathy_responses": [
+      "害怕犯错是人之常情",
+      "但错误是成长的一部分",
+      "不尝试就不会知道自己的潜力"
+    ]
+  },
+  {
+    "id": "emotion_048",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"回想起以前的创伤，很难受\"",
+    "keywords": ["创伤", "回忆", "难受", "痛苦", "阴影"],
+    "empathy_responses": [
+      "回忆创伤一定很痛苦",
+      "如果太难受，可能需要专业帮助",
+      "我会一直陪伴支持你"
+    ]
+  },
+  {
+    "id": "emotion_049",
+    "category": "emotion",
+    "emotion_type": "angry",
+    "scenario": "用户说\"看到不文明行为很生气\"",
+    "keywords": ["不文明", "生气", "无语", "愤怒", "不满"],
+    "empathy_responses": [
+      "不文明行为确实让人很气愤",
+      "但生气也改变不了什么",
+      "保持自己的素质就好"
+    ]
+  },
+  {
+    "id": "emotion_050",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"不知道未来会怎样，很迷茫\"",
+    "keywords": ["迷茫", "未来", "不确定", "焦虑", "困惑"],
+    "empathy_responses": [
+      "对未来的迷茫是每个人都会经历的",
+      "不需要现在就知道所有答案",
+      "一步一步来，路会越走越清晰"
+    ]
+  },
+  {
+    "id": "emotion_051",
+    "category": "emotion",
+    "emotion_type": "happy",
+    "scenario": "用户说\"看到美丽的风景，心情特别舒畅\"",
+    "keywords": ["风景", "美丽", "舒畅", "开心", "愉快"],
+    "empathy_responses": [
+      "美丽的风景真的能治愈心灵！",
+      "你去了哪里？",
+      "希望这份好心情持续下去"
+    ]
+  },
+  {
+    "id": "emotion_052",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"觉得自己配不上喜欢的人\"",
+    "keywords": ["配不上", "自卑", "喜欢", "难过", "不值"],
+    "empathy_responses": [
+      "不要这样想，你值得被爱",
+      "每个人都有自己独特的价值",
+      "真正的爱不会因为外在条件而改变"
+    ]
+  },
+  {
+    "id": "emotion_053",
+    "category": "emotion",
+    "emotion_type": "anxious",
+    "scenario": "用户说\"感觉自己总是做得不够好\"",
+    "keywords": ["不够好", "焦虑", "自卑", "压力", "完美主义"],
+    "empathy_responses": [
+      "你已经做得很好了",
+      "完美主义会让自己很累",
+      "允许自己犯错和休息"
+    ]
+  },
+  {
+    "id": "emotion_054",
+    "category": "emotion",
+    "emotion_type": "sad",
+    "scenario": "用户说\"感觉自己越来越没有激情了\"",
+    "keywords": ["没激情", "麻木", "平淡", "无趣", "失落"],
+    "empathy_responses": [
+      "生活的平淡期是很正常的",
+      "也许需要找一些新的兴趣",
+      "小小的改变也能带来新的感觉"
+    ]
+  },
+  {
+    "id": "emotion_055",
+    "category": "emotion",
+    "emotion_type": "angry",
+    "scenario": "用户说\"被别人指手画脚很生气\"",
+    "keywords": ["指手画脚", "生气", "不爽", "愤怒", "干涉"],
+    "empathy_responses": [
+      "被别人干涉确实很让人不爽",
+      "你有权决定自己的事情",
+      "委婉但坚定地表达你的立场"
+    ]
+  }
+]

@@ -1,0 +1,607 @@
+[
+  {
+    "id": "comfort_001",
+    "category": "comfort",
+    "emotion": "sad",
+    "techniques": [
+      "深呼吸：缓慢吸气4秒，屏住呼吸4秒，呼气6秒",
+      "听一些温柔的音乐，让心情慢慢平静",
+      "写下你的感受，把情绪表达出来",
+      "找个安静的地方，让自己安静一会儿"
+    ]
+  },
+  {
+    "id": "comfort_002",
+    "category": "comfort",
+    "emotion": "anxious",
+    "techniques": [
+      "5-4-3-2-1 着陆技巧：说出5样能看见的，4样能触摸的，3样能听见的，2样能闻到的，1样能尝到的",
+      "渐进式肌肉放松：从脚趾开始，逐渐放松每个肌肉群",
+      "想象一个让你感到安全和平静的地方",
+      "提醒自己：这种感觉会过去的"
+    ]
+  },
+  {
+    "id": "comfort_003",
+    "category": "comfort",
+    "emotion": "angry",
+    "techniques": [
+      "暂时离开让你生气的情境，去散散步",
+      "用书写的方式表达你的愤怒，而不是压抑",
+      "做些体力活动，比如跑步、打沙袋",
+      "数到10再回应，给自己一点冷静的时间"
+    ]
+  },
+  {
+    "id": "comfort_004",
+    "category": "comfort",
+    "emotion": "fear",
+    "techniques": [
+      "问自己：最坏的结果是什么？我能接受吗？",
+      "列出你可以采取的行动，一步步来",
+      "想想你过去克服恐惧的经历",
+      "找一个信任的人倾诉你的担忧"
+    ]
+  },
+  {
+    "id": "comfort_005",
+    "category": "comfort",
+    "emotion": "lonely",
+    "techniques": [
+      "联系一个老朋友，聊聊近况",
+      "参加一个兴趣小组或社区活动",
+      "做志愿者，帮助他人能让自己感觉好",
+      "养一只宠物，陪伴带来温暖"
+    ]
+  },
+  {
+    "id": "comfort_006",
+    "category": "comfort",
+    "emotion": "tired",
+    "techniques": [
+      "给自己放个假，哪怕只有半天",
+      "做些不需要动脑子的事情：看电影、听音乐",
+      "好好睡一觉，睡眠是最好的恢复",
+      "减少社交媒体的使用，减少信息过载"
+    ]
+  },
+  {
+    "id": "comfort_007",
+    "category": "comfort",
+    "emotion": "stressed",
+    "techniques": [
+      "列出所有要做的事，按优先级排序",
+      "把大任务分解成小步骤，一步步完成",
+      "学会说'不'，不要什么都揽下来",
+      "每天给自己留一段'我的时间'"
+    ]
+  },
+  {
+    "id": "comfort_008",
+    "category": "comfort",
+    "emotion": "disappointed",
+    "techniques": [
+      "允许自己难过，这是正常的反应",
+      "和信任的人分享你的感受",
+      "从失败中学习，寻找下次改进的方法",
+      "记住，一次失败不代表全部"
+    ]
+  },
+  {
+    "id": "comfort_009",
+    "category": "comfort",
+    "emotion": "overwhelmed",
+    "techniques": [
+      "停下来，深呼吸几次",
+      "把所有事情写下来，一件件处理",
+      "不要追求完美，做到足够好就好",
+      "寻求帮助，不要一个人扛"
+    ]
+  },
+  {
+    "id": "comfort_010",
+    "category": "comfort",
+    "emotion": "guilty",
+    "techniques": [
+      "承认自己的感受，不要压抑",
+      "如果做错了，真诚道歉并尽力弥补",
+      "原谅自己，人都会犯错",
+      "从错误中学习，然后放下"
+    ]
+  },
+  {
+    "id": "comfort_011",
+    "category": "comfort",
+    "emotion": "jealous",
+    "techniques": [
+      "承认自己的嫉妒，不要否认",
+      "把注意力放回自己身上，专注于自己的成长",
+      "想想自己已经拥有的东西",
+      "把嫉妒转化为动力"
+    ]
+  },
+  {
+    "id": "comfort_012",
+    "category": "comfort",
+    "emotion": "embarrassed",
+    "techniques": [
+      "记住，别人不会像你一样记得这件事",
+      "自嘲一下可以缓解尴尬",
+      "承认自己的错误，然后继续前进",
+      "从中学习，下次避免同样的情况"
+    ]
+  },
+  {
+    "id": "comfort_013",
+    "category": "comfort",
+    "emotion": "frustrated",
+    "techniques": [
+      "停下来休息一下，换个环境",
+      "找出让你沮丧的具体原因",
+      "把问题写下来，梳理思路",
+      "做些自己擅长的事，找回掌控感"
+    ]
+  },
+  {
+    "id": "comfort_014",
+    "category": "comfort",
+    "emotion": "homesick",
+    "techniques": [
+      "和家乡的人视频通话",
+      "做些家乡的菜肴，熟悉的味道能带来安慰",
+      "看家乡的照片，回忆美好时光",
+      "在新地方建立新的连接和归属感"
+    ]
+  },
+  {
+    "id": "comfort_015",
+    "category": "comfort",
+    "emotion": "insecure",
+    "techniques": [
+      "列出自己的优点和成就",
+      "和鼓励你的朋友多相处",
+      "设定小目标并完成它们，建立自信",
+      "接受不完美，每个人都有缺点"
+    ]
+  },
+  {
+    "id": "comfort_016",
+    "category": "comfort",
+    "emotion": "sadness",
+    "techniques": [
+      "允许自己哭泣，哭泣是一种释放",
+      "看一部感人的电影，让情绪流动",
+      "写日记记录你的感受",
+      "和朋友倾诉，不要一个人扛"
+    ]
+  },
+  {
+    "id": "comfort_017",
+    "category": "comfort",
+    "emotion": "anxiety",
+    "techniques": [
+      "规律运动，释放压力荷尔蒙",
+      "减少咖啡因摄入，避免加剧焦虑",
+      "练习冥想或正念，专注于当下",
+      "限制负面信息的摄入"
+    ]
+  },
+  {
+    "id": "comfort_018",
+    "category": "comfort",
+    "emotion": "anger_management",
+    "techniques": [
+      "在生气时按下暂停键，不要立即反应",
+      "用'我'句式表达感受，而非指责",
+      "找到健康的发泄渠道：运动、写日记",
+      "事后反思是什么触发了你的愤怒"
+    ]
+  },
+  {
+    "id": "comfort_019",
+    "category": "comfort",
+    "emotion": "fear_uncertainty",
+    "techniques": [
+      "专注于你能控制的事情",
+      "制定多个备选方案，降低风险",
+      "相信自己的应对能力",
+      "提醒自己：不确定性也是机会"
+    ]
+  },
+  {
+    "id": "comfort_020",
+    "category": "comfort",
+    "emotion": "loneliness_solution",
+    "techniques": [
+      "主动联系朋友，不要等待别人",
+      "加入兴趣小组或俱乐部",
+      "做志愿者，帮助他人能建立连接",
+      "养一只宠物，陪伴带来温暖"
+    ]
+  },
+  {
+    "id": "comfort_021",
+    "category": "comfort",
+    "emotion": "exhaustion_recovery",
+    "techniques": [
+      "保证充足的睡眠，每晚7-9小时",
+      "进行轻度运动，如散步或瑜伽",
+      "减少工作和社交压力",
+      "享受放松活动：泡澡、按摩、阅读"
+    ]
+  },
+  {
+    "id": "comfort_022",
+    "category": "comfort",
+    "emotion": "stress_relief",
+    "techniques": [
+      "学会优先级管理，不要什么都做",
+      "使用番茄工作法，专注25分钟休息5分钟",
+      "建立清晰的界限，工作和生活分开",
+      "定期做你喜欢的事情"
+    ]
+  },
+  {
+    "id": "comfort_023",
+    "category": "comfort",
+    "emotion": "disappointment_handling",
+    "techniques": [
+      "给自己时间消化失望的情绪",
+      "和信任的人分享你的感受",
+      "从失望中学习，寻找成长点",
+      "调整期望，设定更现实的目标"
+    ]
+  },
+  {
+    "id": "comfort_024",
+    "category": "comfort",
+    "emotion": "overwhelm_management",
+    "techniques": [
+      "停下来，深呼吸，重新聚焦",
+      "把任务分解成小步骤，一次只做一件",
+      "学会委托，不要什么都自己扛",
+      "降低标准，做到足够好就好"
+    ]
+  },
+  {
+    "id": "comfort_025",
+    "category": "comfort",
+    "emotion": "guilt_release",
+    "techniques": [
+      "承认错误，真诚道歉",
+      "尽力弥补，采取补救行动",
+      "原谅自己，人都会犯错",
+      "从经历中学习，然后放下"
+    ]
+  },
+  {
+    "id": "comfort_026",
+    "category": "comfort",
+    "emotion": "jealousy_transformation",
+    "techniques": [
+      "承认嫉妒的存在，不要否认",
+      "把嫉妒转化为学习和成长的动力",
+      "专注自己的路，和别人比较没有意义",
+      "感恩自己已经拥有的"
+    ]
+  },
+  {
+    "id": "comfort_027",
+    "category": "comfort",
+    "emotion": "embarrassment_recovery",
+    "techniques": [
+      "用幽默化解尴尬局面",
+      "承认自己的笨拙，这让人更亲近",
+      "记住，别人不会像你一样在意",
+      "把尴尬当成故事，笑着分享"
+    ]
+  },
+  {
+    "id": "comfort_028",
+    "category": "comfort",
+    "emotion": "frustration_solution",
+    "techniques": [
+      "暂时放下问题，做点别的事情",
+      "运动一下，释放身体张力",
+      "和朋友吐槽一下，获得支持",
+      "重新审视目标，是否需要调整"
+    ]
+  },
+  {
+    "id": "comfort_029",
+    "category": "comfort",
+    "emotion": "homesick_adaptation",
+    "techniques": [
+      "和家人保持定期联系",
+      "在新环境建立新的日常",
+      "带些家乡的东西到新地方",
+      "探索新城市，发现新的喜欢之处"
+    ]
+  },
+  {
+    "id": "comfort_030",
+    "category": "comfort",
+    "emotion": "confidence_building",
+    "techniques": [
+      "记录每日成就，哪怕很小的",
+      "和鼓励你的人多相处",
+      "挑战自己的舒适区，慢慢成长",
+      "练习积极的自我对话"
+    ]
+  },
+  {
+    "id": "comfort_031",
+    "category": "comfort",
+    "emotion": "sad_expression",
+    "techniques": [
+      "找个安全的空间哭泣",
+      "听悲伤的音乐，让情绪流动",
+      "写一封不寄出的信给让你难过的人或事",
+      "画画或用其他创作方式表达情绪"
+    ]
+  },
+  {
+    "id": "comfort_032",
+    "category": "comfort",
+    "emotion": "anxiety_reduction",
+    "techniques": [
+      "规律作息，保证充足睡眠",
+      "避免酒精和毒品，它们会加剧焦虑",
+      "限制咖啡因，特别是在下午",
+      "尝试瑜伽或太极等放松运动"
+    ]
+  },
+  {
+    "id": "comfort_033",
+    "category": "comfort",
+    "emotion": "anger_channeling",
+    "techniques": [
+      "把愤怒转化为行动的动力",
+      "用运动释放愤怒能量",
+      "写作表达愤怒，然后销毁纸张",
+      "把愤怒转化为改变的决心"
+    ]
+  },
+  {
+    "id": "comfort_034",
+    "category": "comfort",
+    "emotion": "facer_courage",
+    "techniques": [
+      "想象成功克服恐惧的场景",
+      "了解你害怕的事物，知识消除恐惧",
+      "从小步骤开始，慢慢暴露",
+      "记住，勇敢不是不害怕，而是害怕也去做"
+    ]
+  },
+  {
+    "id": "comfort_035",
+    "category": "comfort",
+    "emotion": "loneliness_healing",
+    "techniques": [
+      "做志愿者，在帮助中找到意义",
+      "参加兴趣班，认识志同道合的人",
+      "学习新技能，让自己成长",
+      "在社交媒体上分享真实的自己"
+    ]
+  },
+  {
+    "id": "comfort_036",
+    "category": "comfort",
+    "emotion": "burnout_recovery",
+    "techniques": [
+      "彻底休息几天，远离工作",
+      "重新评估生活优先级",
+      "寻求专业帮助如果需要",
+      "找到带给你快乐和意义的事情"
+    ]
+  },
+  {
+    "id": "comfort_037",
+    "category": "comfort",
+    "emotion": "stress_management",
+    "techniques": [
+      "学会拒绝，不要什么都答应",
+      "建立工作和生活的界限",
+      "定期评估压力源，做出调整",
+      "练习正念冥想，保持内心平静"
+    ]
+  },
+  {
+    "id": "comfort_038",
+    "category": "comfort",
+    "emotion": "disappointment_resilience",
+    "techniques": [
+      "给自己时间感受失望",
+      "从失望中学习，调整策略",
+      "保持灵活，愿意改变计划",
+      "记住，每次失望都是新机会的开始"
+    ]
+  },
+  {
+    "id": "comfort_039",
+    "category": "comfort",
+    "emotion": "overwhelm_coping",
+    "techniques": [
+      "把所有事情写下来，一列出来",
+      "找出最重要的三件事，其他的先放放",
+      "寻求帮助，不要一个人承担",
+      "记住，完成比完美更重要"
+    ]
+  },
+  {
+    "id": "comfort_040",
+    "category": "comfort",
+    "emotion": "guilt_self_compassion",
+    "techniques": [
+      "像对待朋友一样对待自己",
+      "记住人都会犯错，这是人之常情",
+      "尽力弥补后，学会原谅自己",
+      "从错误中成长，然后继续前进"
+    ]
+  },
+  {
+    "id": "comfort_041",
+    "category": "comfort",
+    "emotion": "jealousy_growth",
+    "techniques": [
+      "问自己：嫉妒的是什么？这反映了我什么愿望？",
+      "把嫉妒转化为追求自己目标的动力",
+      "专注于自己的进步，而不是与他人比较",
+      "感恩自己独特的道路和节奏"
+    ]
+  },
+  {
+    "id": "comfort_042",
+    "category": "comfort",
+    "emotion": "embarrassment_humor",
+    "techniques": [
+      "学会自嘲，这能化解紧张",
+      "把尴尬当笑话讲给朋友听",
+      "记住，别人关注的是他们自己，不是你",
+      "把尴尬当成人生的调味剂"
+    ]
+  },
+  {
+    "id": "comfort_043",
+    "category": "comfort",
+    "emotion": "frustration_persistence",
+    "techniques": [
+      "记住，成功往往在再坚持一下之后",
+      "重新评估目标和方法是否需要调整",
+      "找到支持你的人，一起面对困难",
+      "庆祝小的进展，保持积极"
+    ]
+  },
+  {
+    "id": "comfort_044",
+    "category": "comfort",
+    "emotion": "homesick_connection",
+    "techniques": [
+      "定期和家人视频通话",
+      "在家乡的朋友群保持联系",
+      "订阅家乡的新闻和信息",
+      "计划下次回家的时间，有所期待"
+    ]
+  },
+  {
+    "id": "comfort_045",
+    "category": "comfort",
+    "emotion": "confidence_affirmation",
+    "techniques": [
+      "每天对着镜子说积极的话",
+      "记录自己的成就和优点",
+      "设定可实现的小目标并完成",
+      "和给你正能量的人在一起"
+    ]
+  },
+  {
+    "id": "comfort_046",
+    "category": "comfort",
+    "emotion": "sadness_support",
+    "techniques": [
+      "允许自己有悲伤的时候和空间",
+      "不要强迫自己'振作起来'",
+      "如果悲伤持续时间长，考虑寻求专业帮助",
+      "相信时间会治愈一切"
+    ]
+  },
+  {
+    "id": "comfort_047",
+    "category": "comfort",
+    "emotion": "anxiety_grounding",
+    "techniques": [
+      "5-4-3-2-1着陆技巧快速稳定情绪",
+      "深呼吸：吸气4秒，屏息4秒，呼气6秒",
+      "触摸身边的物体，感受当下的真实",
+      "告诉自己：'我现在是安全的'"
+    ]
+  },
+  {
+    "id": "comfort_048",
+    "category": "comfort",
+    "emotion": "anger_constructive",
+    "techniques": [
+      "用'我感到...'而不是'你让我...'表达愤怒",
+      "把愤怒转化为解决问题的动力",
+      "找到健康的出口：运动、写作、艺术",
+      "寻求第三方帮助，如调解或咨询"
+    ]
+  },
+  {
+    "id": "comfort_049",
+    "category": "comfort",
+    "emotion": "facer_exposure",
+    "techniques": [
+      "制作恐惧阶梯，从最不害怕的开始",
+      "每次暴露后奖励自己",
+      "和朋友分享你的进展",
+      "记住，每次面对恐惧都是勇气的表现"
+    ]
+  },
+  {
+    "id": "comfort_050",
+    "category": "comfort",
+    "emotion": "loneliness_meaning",
+    "techniques": [
+      "把独处的时间用于自我成长",
+      "学习新的技能或爱好",
+      "读书、看电影、创作",
+      "在独处中发现自己的价值"
+    ]
+  },
+  {
+    "id": "comfort_051",
+    "category": "comfort",
+    "emotion": "burnout_prevention",
+    "techniques": [
+      "注意身体信号：疲劳、失眠、易怒",
+      "定期休息，不要等到精疲力竭",
+      "建立清晰的工作生活界限",
+      "找到工作的意义和乐趣"
+    ]
+  },
+  {
+    "id": "comfort_052",
+    "category": "comfort",
+    "emotion": "stress_breathing",
+    "techniques": [
+      "4-7-8呼吸法：吸气4秒，屏息7秒，呼气8秒",
+      "盒式呼吸：吸气4秒，屏息4秒，呼气4秒，屏息4秒",
+      "每天练习5-10分钟深呼吸",
+      "感到压力时立即使用呼吸技巧"
+    ]
+  },
+  {
+    "id": "comfort_053",
+    "category": "comfort",
+    "emotion": "disappointment_reframe",
+    "techniques": [
+      "问自己：这件事一年后还重要吗？",
+      "寻找失望中的学习机会",
+      "调整期望，更现实地看待事情",
+      "相信每次失望都是为了更好的事情让路"
+    ]
+  },
+  {
+    "id": "comfort_054",
+    "category": "comfort",
+    "emotion": "overwhelm_prioritize",
+    "techniques": [
+      "使用艾森豪威尔矩阵区分重要和紧急",
+      "学会说'不'，保护自己的时间和精力",
+      "把任务分解成小步骤，逐个完成",
+      "完成每件事后奖励自己"
+    ]
+  },
+  {
+    "id": "comfort_055",
+    "category": "comfort",
+    "emotion": "guilt_amends",
+    "techniques": [
+      "如果伤害了别人，真诚道歉并尽力弥补",
+      "原谅自己的不完美",
+      "从错误中学习，避免再犯",
+      "用行动证明你的改变"
+    ]
+  }
+]

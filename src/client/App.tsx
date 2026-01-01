@@ -4,6 +4,7 @@ import { ChatInput } from './components/Chat/ChatInput';
 import { useChatStore, SourceInfo } from './store/chatStore';
 import { useEmotionStore } from './store/emotionStore';
 import { useKeyStore } from './store/keyStore';
+import { useMemoryStore, extractMemoriesFromConversation } from './store/memoryStore';
 import { sendMessageStream } from './services/chatService';
 import { AvatarController, EmotionType } from './components/Avatar/AvatarController';
 import { KeyInputModal } from './components/Common/KeyInputModal';
@@ -84,6 +85,348 @@ function renderRichText(text: string): React.ReactNode {
     return <br key={lineIdx} />;
   });
 }
+
+/**
+ * 快捷倾诉面板 - 支持多级分类
+ */
+interface QuickSharePanelProps {
+  onSend: (message: string) => void;
+  onClose: () => void;
+}
+
+type ScenarioCategory = {
+  name: string;
+  emoji: string;
+  color: string;
+  scenarios: Array<{
+    label: string;
+    text: string;
+    subOptions?: Array<{ label: string; text: string }>;
+  }>;
+};
+
+const QuickSharePanel: React.FC<QuickSharePanelProps> = ({ onSend, onClose }) => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [expandedScenarios, setExpandedScenarios] = useState<Set<string>>(new Set());
+
+  const scenarioCategories: ScenarioCategory[] = [
+    {
+      name: '工作',
+      emoji: '💼',
+      color: 'from-blue-50 to-indigo-50',
+      scenarios: [
+        {
+          label: '工作压力大',
+          text: '最近工作压力很大，事情做不完，感觉很焦虑',
+          subOptions: [
+            { label: '任务太多', text: '手头的工作任务太多了，根本做不完' },
+            { label: ' deadline临近', text: '项目deadline快到了，但还没完成，压力很大' },
+            { label: '责任太重', text: '承担的责任太重，感觉自己扛不住' }
+          ]
+        },
+        {
+          label: '被批评',
+          text: '今天被领导批评了，心情很不好',
+          subOptions: [
+            { label: '不公平批评', text: '领导批评得很不公平，心里很委屈' },
+            { label: '当众批评', text: '在同事面前被批评，感觉很没面子' },
+            { label: '严厉批评', text: '领导批评得很严厉，让我很害怕' }
+          ]
+        },
+        {
+          label: '加班太累',
+          text: '连续加班好几天了，身体和精神都很疲惫',
+          subOptions: [
+            { label: '熬夜加班', text: '每天都要加班到很晚，身体快垮了' },
+            { label: '周末加班', text: '周末也要加班，完全没有休息时间' },
+            { label: '无偿加班', text: '经常无偿加班，感觉很委屈' }
+          ]
+        },
+        {
+          label: '升职加薪',
+          text: '太棒了！我升职加薪了，想找人分享这份喜悦',
+          subOptions: [
+            { label: '升职了', text: '我升职了！很开心但也有一些压力' },
+            { label: '加薪了', text: '终于加薪了，付出的努力得到认可' },
+            { label: '升职加薪', text: '升职又加薪，这是对我工作最好的肯定' }
+          ]
+        },
+        {
+          label: '同事关系',
+          text: '和同事的关系有些问题',
+          subOptions: [
+            { label: '同事竞争', text: '和同事之间竞争很激烈，感觉很累' },
+            { label: '被排挤', text: '感觉被同事排挤，很不舒服' },
+            { label: '合作不愉快', text: '和同事合作很不愉快，效率很低' }
+          ]
+        }
+      ]
+    },
+    {
+      name: '学习',
+      emoji: '📚',
+      color: 'from-purple-50 to-pink-50',
+      scenarios: [
+        {
+          label: '考试紧张',
+          text: '马上要考试了，很紧张，担心考不好',
+          subOptions: [
+            { label: '担心挂科', text: '很担心考试会挂科，压力很大' },
+            { label: '准备不足', text: '感觉自己准备得不够充分，心里没底' },
+            { label: '重要考试', text: '这次考试对我很重要，更紧张了' }
+          ]
+        },
+        {
+          label: '学习困难',
+          text: '学习上遇到了很多困难，不知道怎么突破',
+          subOptions: [
+            { label: '学不懂', text: '有些内容怎么学都学不懂，很苦恼' },
+            { label: '没动力', text: '完全没有学习动力，很拖延' },
+            { label: '注意力不集中', text: '学习的时候总是注意力不集中' }
+          ]
+        },
+        {
+          label: '成绩好',
+          text: '这次考试成绩很好，付出的努力终于有回报了',
+          subOptions: [
+            { label: '进步大', text: '这次成绩进步很大，很激动' },
+            { label: '第一名', text: '居然考了第一名，太开心了' },
+            { label: '达成目标', text: '达到了自己的目标分数，很满足' }
+          ]
+        },
+        {
+          label: '毕业迷茫',
+          text: '快毕业了，对未来感到很迷茫，不知道该怎么办',
+          subOptions: [
+            { label: '找工作难', text: '毕业了但找不到合适的工作，很焦虑' },
+            { label: '方向迷茫', text: '不知道自己想做什么，很迷茫' },
+            { label: '害怕未来', text: '马上要步入社会，对未知很害怕' }
+          ]
+        }
+      ]
+    },
+    {
+      name: '情感',
+      emoji: '❤️',
+      color: 'from-red-50 to-pink-50',
+      scenarios: [
+        {
+          label: '朋友矛盾',
+          text: '和好朋友吵架了，心里很难受',
+          subOptions: [
+            { label: '误会争吵', text: '因为误会和好朋友吵架了，很委屈' },
+            { label: '背叛感', text: '感觉被朋友背叛了，很伤心' },
+            { label: '渐行渐远', text: '感觉和好朋友渐行渐远，很难过' }
+          ]
+        },
+        {
+          label: '恋爱问题',
+          text: '感情上遇到了一些问题，不知道该怎么处理',
+          subOptions: [
+            { label: '单身焦虑', text: '看着别人都有对象，自己还是单身，很焦虑' },
+            { label: '感情危机', text: '和对象的感情出现危机，不知道怎么办' },
+            { label: '分手痛苦', text: '刚经历分手，非常痛苦' }
+          ]
+        },
+        {
+          label: '家庭矛盾',
+          text: '和家人有些矛盾，让我很困扰',
+          subOptions: [
+            { label: '父母压力', text: '父母给我的压力太大了，很压抑' },
+            { label: '代沟问题', text: '和父母之间有很深的代沟，无法沟通' },
+            { label: '家庭争吵', text: '家里经常争吵，让我很难受' }
+          ]
+        },
+        {
+          label: '感到孤独',
+          text: '最近感觉很孤独，没有人可以倾诉',
+          subOptions: [
+            { label: '没人理解', text: '感觉没有人能理解我，很孤独' },
+            { label: '社交困难', text: '不知道怎么和人建立关系，很孤独' },
+            { label: '独处太久', text: '一个人待太久，感觉很空虚' }
+          ]
+        }
+      ]
+    },
+    {
+      name: '生活',
+      emoji: '🌟',
+      color: 'from-yellow-50 to-amber-50',
+      scenarios: [
+        {
+          label: '失眠困扰',
+          text: '最近总是失眠，晚上睡不着，白天没精神',
+          subOptions: [
+            { label: '入睡困难', text: '每天晚上都要很久才能睡着' },
+            { label: '早醒', text: '每天很早就醒了，再也睡不着' },
+            { label: '多梦', text: '晚上做梦太多，睡得很累' }
+          ]
+        },
+        {
+          label: '经济压力',
+          text: '最近经济压力比较大，不知道怎么规划开支',
+          subOptions: [
+            { label: '月光族', text: '每个月都月光，根本存不下钱' },
+            { label: '负债压力', text: '有一些负债，压力很大' },
+            { label: '开销大', text: '最近开销太大了，不知道怎么控制' }
+          ]
+        },
+        {
+          label: '搬家烦恼',
+          text: '最近在搬家，很多事情要处理，感觉很累',
+          subOptions: [
+            { label: '整理麻烦', text: '要整理的东西太多了，很麻烦' },
+            { label: '适应新环境', text: '搬到了新地方，不太适应' },
+            { label: '离开旧地', text: '要离开熟悉的地方，有点不舍' }
+          ]
+        },
+        {
+          label: '健康问题',
+          text: '最近身体不太舒服，有点担心',
+          subOptions: [
+            { label: '小病缠身', text: '最近小毛病不断，很烦人' },
+            { label: '担心健康', text: '很担心自己的健康状况' },
+            { label: '需要手术', text: '可能需要做手术，很紧张' }
+          ]
+        }
+      ]
+    },
+    {
+      name: '情绪',
+      emoji: '😊',
+      color: 'from-green-50 to-teal-50',
+      scenarios: [
+        {
+          label: '莫名烦躁',
+          text: '今天不知道为什么，突然感觉很烦躁',
+          subOptions: [
+            { label: '易怒', text: '最近很容易发火，控制不住情绪' },
+            { label: '情绪低落', text: '莫名其妙就很低落，很难受' },
+            { label: '情绪波动', text: '情绪波动很大，很不稳定' }
+          ]
+        },
+        {
+          label: '焦虑不安',
+          text: '最近总是很焦虑，坐立难安',
+          subOptions: [
+            { label: '对未来的焦虑', text: '对未来充满了不确定性，很焦虑' },
+            { label: '社交焦虑', text: '在人群中就感到很焦虑' },
+            { label: '健康焦虑', text: '总是担心自己的健康问题' }
+          ]
+        },
+        {
+          label: '分享喜悦',
+          text: '今天发生了一件很开心的事，想和你分享',
+          subOptions: [
+            { label: '小事开心', text: '虽然只是小事，但让我很开心' },
+            { label: '收到礼物', text: '收到了很喜欢的礼物，很开心' },
+            { label: '心情超好', text: '今天心情特别好，想聊聊天' }
+          ]
+        },
+        {
+          label: '随意聊天',
+          text: '只是想找人随便聊聊，打发时间',
+          subOptions: [
+            { label: '无聊', text: '有点无聊，想找人聊聊天' },
+            { label: '分享日常', text: '想和你分享一下今天的日常' },
+            { label: '寻求陪伴', text: '只是想要你的陪伴，聊什么都行' }
+          ]
+        }
+      ]
+    }
+  ];
+
+  const currentCategory = scenarioCategories.find(c => c.name === selectedCategory);
+
+  const toggleScenario = (label: string) => {
+    const newExpanded = new Set(expandedScenarios);
+    if (newExpanded.has(label)) {
+      newExpanded.delete(label);
+    } else {
+      newExpanded.add(label);
+    }
+    setExpandedScenarios(newExpanded);
+  };
+
+  const handleSend = (text: string) => {
+    onSend(text);
+    onClose();
+  };
+
+  return (
+    <div className="p-4 max-h-[500px] overflow-y-auto">
+      <h3 className="text-sm font-semibold text-gray-700 mb-3">快捷倾诉</h3>
+
+      {!selectedCategory ? (
+        // 分类选择
+        <div className="grid grid-cols-3 gap-2">
+          {scenarioCategories.map((category) => (
+            <button
+              key={category.name}
+              onClick={() => setSelectedCategory(category.name)}
+              className={`p-3 bg-gradient-to-br ${category.color} rounded-lg text-sm hover:opacity-80 transition flex flex-col items-center`}
+            >
+              <span className="text-2xl">{category.emoji}</span>
+              <span className="text-gray-700 mt-1 text-xs font-medium">{category.name}</span>
+            </button>
+          ))}
+        </div>
+      ) : (
+        // 场景选择
+        <div>
+          <button
+            onClick={() => setSelectedCategory(null)}
+            className="mb-3 text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1"
+          >
+            ← 返回分类
+          </button>
+          <div className="space-y-2">
+            {currentCategory?.scenarios.map((scenario) => {
+              const hasSubOptions = scenario.subOptions && scenario.subOptions.length > 0;
+              const isExpanded = expandedScenarios.has(scenario.label);
+
+              return (
+                <div key={scenario.label}>
+                  <button
+                    onClick={() => {
+                      if (hasSubOptions && !isExpanded) {
+                        toggleScenario(scenario.label);
+                      } else if (hasSubOptions && isExpanded) {
+                        toggleScenario(scenario.label);
+                      } else {
+                        handleSend(scenario.text);
+                      }
+                    }}
+                    className={`w-full p-3 bg-gradient-to-r ${currentCategory.color} rounded-lg text-sm hover:opacity-80 transition text-left flex items-center justify-between`}
+                  >
+                    <span className="text-gray-700">{scenario.label}</span>
+                    {hasSubOptions && (
+                      <span className={`text-xs transition-transform ${isExpanded ? 'rotate-180' : ''}`}>▼</span>
+                    )}
+                  </button>
+
+                  {hasSubOptions && isExpanded && (
+                    <div className="ml-4 mt-1 space-y-1">
+                      {scenario.subOptions!.map((subOption, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => handleSend(subOption.text)}
+                          className="w-full p-2 bg-white hover:bg-gray-50 rounded-lg text-xs text-gray-600 hover:text-gray-800 transition text-left"
+                        >
+                          {subOption.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 /**
  * 情绪统计面板 - 替代情绪日记功能
@@ -218,9 +561,90 @@ const EmotionStatsPanel: React.FC = () => {
   );
 };
 
+/**
+ * 记忆面板 - 显示系统记住的用户信息
+ */
+const MemoryPanel: React.FC = () => {
+  const { getAllMemories, deleteMemory, searchMemories } = useMemoryStore();
+  const [searchQuery, setSearchQuery] = useState('');
+  const memories = searchQuery ? searchMemories(searchQuery) : getAllMemories();
+
+  const typeLabels: Record<string, { label: string; emoji: string; color: string }> = {
+    preference: { label: '偏好', emoji: '❤️', color: 'bg-pink-50 text-pink-600 border-pink-200' },
+    important_day: { label: '重要日子', emoji: '🎂', color: 'bg-purple-50 text-purple-600 border-purple-200' },
+    personal_info: { label: '个人信息', emoji: '👤', color: 'bg-blue-50 text-blue-600 border-blue-200' },
+    habit: { label: '习惯', emoji: '🔄', color: 'bg-green-50 text-green-600 border-green-200' },
+    goal: { label: '目标', emoji: '🎯', color: 'bg-yellow-50 text-yellow-600 border-yellow-200' },
+    relationship: { label: '人际关系', emoji: '👥', color: 'bg-indigo-50 text-indigo-600 border-indigo-200' },
+    health: { label: '健康状况', emoji: '🏥', color: 'bg-red-50 text-red-600 border-red-200' },
+    concern: { label: '关注点', emoji: '💭', color: 'bg-orange-50 text-orange-600 border-orange-200' },
+    achievement: { label: '成就', emoji: '🏆', color: 'bg-amber-50 text-amber-600 border-amber-200' }
+  };
+
+  return (
+    <div className="p-4">
+      <h3 className="text-sm font-semibold text-gray-700 mb-3">小星记住的关于你</h3>
+
+      {/* 搜索框 */}
+      <div className="mb-3">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="搜索记忆..."
+          className="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+        />
+      </div>
+
+      {memories.length === 0 ? (
+        <div className="text-center py-8 text-gray-400">
+          <div className="text-4xl mb-2">💭</div>
+          <p className="text-sm">
+            {searchQuery ? '没有找到相关记忆' : '小星还没有记住关于你的信息\n聊得多了，我就会记住更多~'}
+          </p>
+        </div>
+      ) : (
+        <div className="space-y-2 max-h-80 overflow-y-auto">
+          {memories.map((memory) => {
+            const typeInfo = typeLabels[memory.type];
+            return (
+              <div
+                key={memory.id}
+                className={`p-3 rounded-lg border ${typeInfo?.color || 'bg-gray-50'}`}
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-sm">{typeInfo?.emoji}</span>
+                      <span className="text-xs font-medium">{typeInfo?.label}</span>
+                      <span className="text-[10px] opacity-60">重要性: {'★'.repeat(memory.importance)}</span>
+                    </div>
+                    <div className="text-sm font-medium text-gray-800">{memory.key}</div>
+                    <div className="text-xs text-gray-600 mt-0.5">{memory.value}</div>
+                    <div className="text-[10px] text-gray-400 mt-1">
+                      提及 {memory.mentionCount} 次 · {new Date(memory.lastMentioned).toLocaleDateString()}
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => deleteMemory(memory.id)}
+                    className="text-gray-400 hover:text-red-500 text-xs px-2 py-1"
+                    title="删除记忆"
+                  >
+                    ✕
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};
+
 function App() {
   const controllerRef = useRef<AvatarController | null>(null);
-  const [showPanel, setShowPanel] = useState<'stats' | 'quick' | null>(null);
+  const [showPanel, setShowPanel] = useState<'stats' | 'quick' | 'memory' | null>(null);
   // 记录哪些消息的知识库来源被展开
   const [expandedSources, setExpandedSources] = useState<Set<string>>(new Set());
 
@@ -230,6 +654,12 @@ function App() {
 
   // 情绪管理
   const { setCurrentEmotion, addToHistory } = useEmotionStore();
+
+  // 记忆管理
+  const { buildUserProfile, addMemory, getImportantMemories } = useMemoryStore();
+
+  // 记忆提取引用（用于在对话完成后提取记忆）
+  const lastUserMessageRef = useRef<string>('');
 
   // 检查是否需要显示密钥输入弹窗
   useEffect(() => {
@@ -261,6 +691,9 @@ function App() {
   }, [messages, currentResponse]);
 
   const handleSendMessage = async (text: string) => {
+    // 保存用户消息用于后续记忆提取
+    lastUserMessageRef.current = text;
+
     addMessage({
       id: Date.now().toString(),
       role: 'user',
@@ -274,10 +707,11 @@ function App() {
     controllerRef.current?.setListen();
 
     const history = getConversationHistory();
+    const userProfile = buildUserProfile(); // 获取用户画像
     let accumulatedResponse = '';
 
     await sendMessageStream(
-      { message: text, conversationHistory: history },
+      { message: text, conversationHistory: history, userProfile }, // 传递用户画像
       (chunk) => {
         accumulatedResponse += chunk;
         appendCurrentResponse(chunk);
@@ -286,6 +720,13 @@ function App() {
         console.log('[App] Stream complete, full response:', accumulatedResponse);
         console.log('[App] Knowledge sources:', sources);
         console.log('[App] User emotion:', emotion);
+
+        // 尝试从对话中提取记忆
+        const extractedMemories = extractMemoriesFromConversation(lastUserMessageRef.current, accumulatedResponse);
+        extractedMemories.forEach(memory => {
+          addMemory(memory);
+          console.log('[App] Memory extracted:', memory);
+        });
 
         // 保存用户情绪到store
         if (emotion) {
@@ -417,6 +858,17 @@ function App() {
                   >
                     📈
                   </button>
+                  <button
+                    onClick={() => setShowPanel(showPanel === 'memory' ? null : 'memory')}
+                    className={`w-10 h-10 rounded-full flex items-center justify-center text-xl transition ${
+                      showPanel === 'memory'
+                        ? 'bg-gradient-to-r from-purple-400 to-pink-400 text-white shadow-lg'
+                        : 'bg-gray-100 hover:bg-gray-200'
+                    }`}
+                    title="记忆管理"
+                  >
+                    💭
+                  </button>
                   <div className="w-px h-6 bg-gray-200"></div>
                   <button
                     onClick={handleNewChat}
@@ -430,57 +882,14 @@ function App() {
               {/* 浮动面板 */}
               {showPanel && (
                 <div className="absolute top-16 right-4 z-20 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 animate-fade-in">
-                  {showPanel === 'quick' && (
-                    <div className="p-4 max-h-96 overflow-y-auto">
-                      <h3 className="text-sm font-semibold text-gray-700 mb-3">快捷倾诉</h3>
-                      <div className="grid grid-cols-2 gap-2">
-                        {[
-                          // 工作相关
-                          { label: '工作压力大', emoji: '🏢', text: '最近工作压力很大，事情做不完，感觉很焦虑', color: 'from-red-50 to-orange-50' },
-                          { label: '被领导批评', emoji: '😔', text: '今天被领导批评了，心情很不好', color: 'from-gray-50 to-slate-50' },
-                          { label: '加班太累', emoji: '😩', text: '连续加班好几天了，身体和精神都很疲惫', color: 'from-purple-50 to-indigo-50' },
-                          { label: '升职加薪', emoji: '🎉', text: '太棒了！我升职加薪了，想找人分享这份喜悦', color: 'from-yellow-50 to-amber-50' },
-
-                          // 学习相关
-                          { label: '考试紧张', emoji: '📚', text: '马上要考试了，很紧张，担心考不好', color: 'from-blue-50 to-cyan-50' },
-                          { label: '学习遇到困难', emoji: '📝', text: '学习上遇到了很多困难，不知道怎么突破', color: 'from-indigo-50 to-blue-50' },
-                          { label: '拿到好成绩', emoji: '🏆', text: '这次考试成绩很好，付出的努力终于有回报了', color: 'from-green-50 to-emerald-50' },
-                          { label: '毕业迷茫', emoji: '🎓', text: '快毕业了，对未来感到很迷茫，不知道该怎么办', color: 'from-slate-50 to-gray-50' },
-
-                          // 人际关系
-                          { label: '和朋友的矛盾', emoji: '💔', text: '和好朋友吵架了，心里很难受', color: 'from-pink-50 to-rose-50' },
-                          { label: '感情问题', emoji: '💕', text: '感情上遇到了一些问题，不知道该怎么处理', color: 'from-red-50 to-pink-50' },
-                          { label: '家庭矛盾', emoji: '🏠', text: '和家人有些矛盾，让我很困扰', color: 'from-orange-50 to-red-50' },
-                          { label: '感到孤独', emoji: '😔', text: '最近感觉很孤独，没有人可以倾诉', color: 'from-gray-50 to-zinc-50' },
-
-                          // 生活日常
-                          { label: '失眠困扰', emoji: '😴', text: '最近总是失眠，晚上睡不着，白天没精神', color: 'from-violet-50 to-purple-50' },
-                          { label: '经济压力', emoji: '💰', text: '最近经济压力比较大，不知道怎么规划开支', color: 'from-emerald-50 to-teal-50' },
-                          { label: '搬家烦恼', emoji: '📦', text: '最近在搬家，很多事情要处理，感觉很累', color: 'from-amber-50 to-yellow-50' },
-                          { label: '身体不适', emoji: '🤒', text: '最近身体不太舒服，有点担心', color: 'from-rose-50 to-pink-50' },
-
-                          // 情绪发泄
-                          { label: '无缘无故烦躁', emoji: '😤', text: '今天不知道为什么，突然感觉很烦躁', color: 'from-red-50 to-orange-50' },
-                          { label: '想找人聊天', emoji: '💭', text: '只是想找人随便聊聊，打发时间', color: 'from-sky-50 to-blue-50' },
-                        ].map((item) => (
-                          <button
-                            key={item.label}
-                            onClick={() => {
-                              handleSendMessage(item.text);
-                              setShowPanel(null);
-                            }}
-                            className={`p-3 bg-gradient-to-br ${item.color} rounded-lg text-sm hover:opacity-80 transition text-left`}
-                          >
-                            <span className="text-lg">{item.emoji}</span>
-                            <p className="text-gray-700 mt-1 text-xs leading-tight">{item.label}</p>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  {showPanel === 'quick' && <QuickSharePanel onSend={handleSendMessage} onClose={() => setShowPanel(null)} />}
 
                   {showPanel === 'stats' && (
                     <EmotionStatsPanel />
+                  )}
+
+                  {showPanel === 'memory' && (
+                    <MemoryPanel />
                   )}
                 </div>
               )}
